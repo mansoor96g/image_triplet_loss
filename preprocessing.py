@@ -37,10 +37,10 @@ class PreProcessing:
         y = []
         for directory in os.listdir(self.data_src):
             try:
-                for pic in os.listdir(os.path.join(self.data_src, directory)):
-                    img = imread(os.path.join(self.data_src, directory, pic))
+#                 for pic in os.listdir(os.path.join(self.data_src, directory)):
+                    img = imread(os.path.join(self.data_src, directory))
                     X.append(np.squeeze(np.asarray(img)))
-                    y.append(directory)
+                    y.append(directory.split("_")[0]) ######## label instade of direcotry
             except Exception as e:
                 print('Failed to read images from Directory: ', directory)
                 print('Exception Message: ', e)
